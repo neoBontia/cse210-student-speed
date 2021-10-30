@@ -64,11 +64,12 @@ class Actor:
         Args:
             self (Actor): an instance of Actor.
         """
+        offset = len(self.get_text())
         x1 = self._position.get_x()
         y1 = self._position.get_y()
         x2 = self._velocity.get_x()
         y2 = self._velocity.get_y()
-        x = 1 + (x1 + x2 - 1) % (constants.MAX_X - 1)
+        x = 1 + (x1 + x2 - 1) % (constants.MAX_X - offset)
         y = 1 + (y1 + y2 - 1) % (constants.MAX_Y - 1)
         position = Point(x, y)
         self._position = position

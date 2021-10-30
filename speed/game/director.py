@@ -26,7 +26,10 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        self._word1 = Word()
+        self._word_list = []
+        for _ in range(constants.STARTING_WORDS):
+            word = Word()
+            self._word_list.append(word)
         self._input_service = input_service
         self._keep_playing = True
         self._output_service = output_service
@@ -53,7 +56,8 @@ class Director:
             self (Director): An instance of Director.
         """
         self._buffer.add_characters(self._input_service.get_letter())  # adding a char at every type
-        self._word1.move_next() # for the word movement
+        for word in self._word_list:
+            word.move_next()
 
     def _do_updates(self):
         """Updates the important game information for each round of play. In 
@@ -73,7 +77,8 @@ class Director:
             self (Director): An instance of Director.
         """
         self._output_service.clear_screen()
-        self._output_service.draw_actor(self._word1)
+        for word in self._word_list:
+            self._output_service.draw_actor(word)
         self._output_service.draw_actors(self._buffer.get_all())
         self._output_service.draw_actor(self._score)
         self._output_service.check(self._buffer.get_string()) # prints the current string
@@ -81,8 +86,10 @@ class Director:
 
     def _handle_checking(self):
         answer = self._buffer.get_string()
-        key = self._word1.get_text()
 
-        if answer == key:
-            self._score.add_points(self._word1.get_points())
-            self._word1.reset()
+        for word in self._word_list:
+            key = word.get_text()
+
+            if answer == key:
+                self._score.add_points(word.get_points())
+                word.reset()

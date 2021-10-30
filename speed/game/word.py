@@ -22,13 +22,20 @@ class Word (Actor):
         y = random.randint(2, constants.MAX_Y)
         self._position = Point(x, y)
         self._points = 1
-        self._velocity = Point(1, 0)
+        if random.randint(1,2) == 1:
+            self._velocity = Point(1, 0)
+        else:
+            self._velocity = Point(0, 1)
 
     def reset(self):
         self._text = random.choice(constants.LIBRARY)
         x = random.randint(2, constants.MAX_X)
         y = random.randint(2, constants.MAX_Y)
         self._position = Point(x, y)
+        if random.randint(1, 2) == 1:
+            self._velocity = Point(1, 0)
+        else:
+            self._velocity = Point(0, 1)
 
     def get_points(self):
         return self._points
