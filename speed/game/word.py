@@ -3,7 +3,6 @@ from game import constants
 from game.actor import Actor
 from game.point import Point
 
-
 class Word (Actor):
     """Food is a nutritious substance that snakes like.
     The responsibility of Food is to keep track of its 
