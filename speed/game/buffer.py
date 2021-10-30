@@ -34,6 +34,13 @@ class Buffer:
         """
         return self._segments
 
+    def get_string(self):
+        s = ""
+        for x in self._segments[1:]:
+            s += x.get_text()
+
+        return s
+
     def add_characters(self, char):
         """Grows the snake's tail by one segment.
         

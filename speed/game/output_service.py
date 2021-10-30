@@ -62,3 +62,6 @@ class OutputService:
             self (OutputService): An instance of OutputService.
         """
         self._screen.refresh()
+
+    def check(self, text):
+        self._screen.print_at(text, 0, constants.MAX_Y-1, 7)
