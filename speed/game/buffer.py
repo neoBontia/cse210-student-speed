@@ -47,7 +47,9 @@ class Buffer:
         Args:
             self (Snake): An instance of snake.
         """
-        if not char == None:  # adding new characters to the buffer
+        if char == "*":
+            self._prepare_buffer()
+        elif not char == None:  # adding new characters to the buffer
             #offset = 0
             offset = self._get_offset()
             #tail = self._segments[-1]
