@@ -7,6 +7,7 @@ from game.point import Point
 class Word:
     def __init__(self):
         self._word_bank = []
+        super.__init__():
 
     def reset(self):
         pass
